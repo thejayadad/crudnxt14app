@@ -2,10 +2,10 @@ import mongoose from "mongoose";
 
 
 const ExerciseSchema = new mongoose.Schema({
-    name: { type: String },
-    duration: { type: Number }, 
-    calories: { type: Number },
-    day: Number,
+    name: String,
+    duration: Number, 
+    calories: Number,
+    rating: Number, 
     mood: String,
     notes: { type: String },
   });

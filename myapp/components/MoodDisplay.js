@@ -22,7 +22,7 @@ const MoodDisplay = ({mood}) => {
       };
   return (
     <span
-    className={`inline-block  rounded-full px-2 py-1 text-xs font-semibold text-gray-700 ${getColor(
+    className={`inline-block  rounded-lg px-4 py-2 text-xs font-semibold text-gray-700 ${getColor(
       mood
     )}`}
   >

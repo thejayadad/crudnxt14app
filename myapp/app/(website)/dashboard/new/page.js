@@ -1,42 +1,37 @@
 import React from 'react'
 import {Card, CardHeader, CardBody, Input, Textarea, Button, CardFooter, Divider, Link, Image} from "@nextui-org/react";
-import { updateExercise } from '@/lib/action';
-import { getSingleExercise } from '@/lib/data';
+import { addExercise } from '@/lib/action';
 
 
-const ExercisePage = async ({ params }) => {
-  
-  const { id } = params;
-  const exercise = await getSingleExercise(id)
+const NewExercise = () => {
   return (
     <div>
-      <Card className="max-w-screen-md mx-auto">
+        <Card className="max-w-screen-md mx-auto">
         <CardHeader className="flex gap-3">
             FitLog
         </CardHeader>
         <Divider/>
         <CardBody>
             <form
-            action={updateExercise}
+            action={addExercise}
              className='flex flex-col items-center p-4 gap-6'
             >
                 <Input
-                type='text'
                 className='w-full'
+                    placeholder='Name...'
                     name='name'
                     autoComplete='false'
-                    placeholder={exercise.name || "Name..."}
                 />
                 <div className='flex gap-4 w-full'>
                 <Input
                 type='number'
-                name='duration'
-                placeholder={exercise.duration || 0}
+                    placeholder='Duration...'
+                    name='duration'
                 />
                 <Input
                 type='number'
                     name='calories'
-                    placeholder={exercise.calories || 0}
+                    placeholder='Calories'
                 />
                 </div>
                 <label>Mood</label>
@@ -52,17 +47,16 @@ const ExercisePage = async ({ params }) => {
                     <Input
                     type='number'
                     name='rating'
-                    placeholder={exercise.rating || 0}
+                    placeholder='Rating...'
                 />
                 <Textarea
-                type='text'
+                    placeholder='Notes...'
                     name='notes'
-                    placeholder={exercise.notes || "Notes..."}
                 />
                 <Button 
                 type='submit'
                 className='bg-primary'
-                >Update Exercise</Button>
+                >Post Exercise</Button>
           </form>
         </CardBody>
         </Card>
@@ -70,4 +64,4 @@ const ExercisePage = async ({ params }) => {
   )
 }
 
-export default ExercisePage
+export default NewExercise
