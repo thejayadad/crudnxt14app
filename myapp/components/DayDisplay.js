@@ -1,6 +1,5 @@
 import React from 'react'
 import {FaDumbbell} from "react-icons/fa"
-import {Fi} from "react-icons/fi"
 
 const DayDisplay = ({day}) => {
   return (
