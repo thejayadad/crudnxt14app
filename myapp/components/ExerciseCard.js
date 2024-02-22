@@ -12,7 +12,8 @@ const ExerciseCard = ({exercise}) => {
    className='max-w-screen-sm'
    >
     <CardHeader>
-    <div className='flex w-full justify-between p-4'>
+    <div
+    className='flex w-full justify-between p-4'>
         <p>
             <Link
             className='cursor-pointer'

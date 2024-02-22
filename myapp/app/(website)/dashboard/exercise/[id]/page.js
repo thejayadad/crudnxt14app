@@ -1,47 +1,48 @@
+import { updateContact, updateExercise } from '@/lib/action';
+import { getSingleExercise } from '@/lib/data';
 import React from 'react'
 import {Card, CardHeader, CardBody, Input, Textarea, Button, CardFooter, Divider, Link, Image} from "@nextui-org/react";
-import { updateExercise } from '@/lib/action';
-import { getSingleExercise } from '@/lib/data';
 
-
-const ExercisePage = async ({ params }) => {
-  
-  const { id } = params;
-  const exercise = await getSingleExercise(id)
+const ExercisePage = async ({params}) => {
+    const { id } = params;
+    const exercise = await getSingleExercise(id)
   return (
     <div>
-      <Card className="max-w-screen-md mx-auto">
-        <CardHeader className="flex gap-3">
+    <Card className="max-w-screen-md mx-auto">
+        <CardHeader className="flex flex-col gap-3">
             FitLog
         </CardHeader>
         <Divider/>
         <CardBody>
-            <form
-            action={updateExercise}
-             className='flex flex-col items-center p-4 gap-6'
-            >
-                <Input
-                type='text'
-                className='w-full'
-                    name='name'
-                    autoComplete='false'
-                    placeholder={exercise.name || "Name..."}
-                />
-                <div className='flex gap-4 w-full'>
+        <form
+        className='flex flex-col gap-4'
+        action={updateContact}
+        >
+            <input type='text' name='id' hidden value={exercise.id} />
+            <Input
+            type='text'
+            id='name'
+                name='name'
+                defaultValue={exercise.name}
+            />
+<div className='flex gap-4 w-full'>
                 <Input
                 type='number'
-                name='duration'
-                placeholder={exercise.duration || 0}
+                    defaultValue={exercise.duration}
+                    name='duration'
+                    id='duration'
                 />
                 <Input
                 type='number'
                     name='calories'
-                    placeholder={exercise.calories || 0}
+                    defaultValue={exercise.calories}
+                    id='calories'
                 />
                 </div>
-                <label>Mood</label>
                 <select
                 name='mood'
+                id='mood'
+                defaultValue={exercise.mood}
                 className='w-full p-6 rounded-lg bg-gray-100 dark:bg-gray-700'
                 >
                     <option value='amazing'>Amazing</option>
@@ -50,20 +51,17 @@ const ExercisePage = async ({ params }) => {
                 </select>
                     <label>Rating</label>
                     <Input
+                    id='rating'
                     type='number'
                     name='rating'
-                    placeholder={exercise.rating || 0}
+                    defaultValue={exercise.rating}
                 />
                 <Textarea
-                type='text'
+                    defaultValue={exercise.notes}
                     name='notes'
-                    placeholder={exercise.notes || "Notes..."}
                 />
-                <Button 
-                type='submit'
-                className='bg-primary'
-                >Update Exercise</Button>
-          </form>
+            <button type='submit'>Update</button>
+        </form>
         </CardBody>
         </Card>
     </div>

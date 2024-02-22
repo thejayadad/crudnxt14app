@@ -1,5 +1,6 @@
 import ExerciseCard from '@/components/ExerciseCard'
 import { getExercises } from '@/lib/data'
+import Link from 'next/link'
 import React from 'react'
 
 const DashboardPage = async () => {
@@ -11,6 +12,11 @@ const DashboardPage = async () => {
         ) : (
           exercises.map((exercise) => (
             <ExerciseCard key={exercise.id} exercise={exercise} />
+            // <div key={exercise.id}>
+            //   <Link href={`/exercise/${exercise._id}`}>
+            //     {exercise.name}
+            //   </Link>
+            // </div>
           ))
         )}
 
