@@ -4,6 +4,7 @@ import DayDisplay from './DayDisplay'
 import MoodDisplay from './MoodDisplay'
 import {Card, CardBody, CardFooter, CardHeader} from "@nextui-org/react";
 import Link from 'next/link';
+import { deleteExercise } from '@/lib/action';
 
 
 const ExerciseCard = ({exercise}) => {
@@ -21,7 +22,15 @@ const ExerciseCard = ({exercise}) => {
             {exercise.name}
             </Link>
         </p>
-        <DeleteIcon />
+        <form
+        action={deleteExercise}
+        >
+    <input hidden name='id' value={exercise.id} />
+
+            <button>
+            <DeleteIcon />
+            </button>
+        </form>
     </div>
     </CardHeader>
     <CardBody>

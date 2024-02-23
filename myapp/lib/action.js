@@ -64,3 +64,17 @@ export const addExercise = async (formData) => {
     revalidatePath("/dashboard")
     redirect("/dashboard")
 }
+
+export const deleteExercise = async (FormData) => {
+  const {id} = Object.fromEntries(FormData)
+  await connectDB()
+
+  try {
+      await Exercise.findByIdAndDelete(id)
+  } catch (error) {
+      throw new Error("Failed To Delete Exercise " + error)
+      
+  }
+  revalidatePath("/")
+
+}
